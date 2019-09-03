@@ -69,21 +69,22 @@ server.delete("/hubs/:id", (req, res) => {
 
 // server.listen should be the last line of code
 
-server.put('hubs/:id', (req, res) => {
-    const { id } = req.params;
-    const changes = req.body:
+server.put("hubs/:id", (req, res) => {
+  const { id } = req.params;
+  const changes = req.body;
 
-    Hubs.update(id, changes)
+  Hubs.update(id, changes)
     .then(updated => {
-        if (updated) {
-            res.status(200).json(updated);
-        } else {
-            res.status(404).json({ message: 'hub not found'})
-        }
-    }).catch(error => {
-        res.status(500).json({ message: 'error updating hub'})
+      if (updated) {
+        res.status(200).json(updated);
+      } else {
+        res.status(404).json({ message: "hub not found" });
+      }
     })
-})
+    .catch(error => {
+      res.status(500).json({ message: "error updating hub" });
+    });
+});
 
 // const express = require("express");
 
